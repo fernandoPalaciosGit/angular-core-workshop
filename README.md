@@ -11,6 +11,8 @@ CREAR LA APLICACION
 - ng generate @nrwl/angular:application dashboard
 - npm start
 
-CREAR LIBRERIA DE ANGULAR
-- ng generate lib material
-
+CREAR LIBRERIAS
+- ng generate lib material (interfaces UI material)
+- ng generate lib core-data (bussiness logic for server side comunication)
+- ng generate lib ui-login -p=ui (interfaz de login)
+- ng generate lib ui-toolbar -p=ui (header con menu de redirecciones)
