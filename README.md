@@ -12,7 +12,11 @@ CREAR LA APLICACION
 - npm start
 
 CREAR LIBRERIAS
-- ng generate lib material (interfaces UI material)
+- ng generate lib material (interfaces UI material components)
 - ng generate lib core-data (bussiness logic for server side comunication)
 - ng generate lib ui-login -p=ui (interfaz de login)
 - ng generate lib ui-toolbar -p=ui (header con menu de redirecciones)
+
+CREAR COMPONENTES
+- ng generate module home --routing
+- bg generate component home

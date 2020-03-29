@@ -43,3 +43,6 @@ Objetivos de una aplicacion Angular:
 
 - PIECES THAT YOU CAN USE: state management library
 - PIECES THAT YOU CAN NOT USE: components very thins
+
+- cuando pensamos en un elemento de muy alto nivel, que contenga ruta, por ejemplo la pagina de la home,
+primero creo el modulo y despues su componente que lo encapsula.
