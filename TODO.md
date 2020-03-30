@@ -46,3 +46,15 @@ Objetivos de una aplicacion Angular:
 
 - cuando pensamos en un elemento de muy alto nivel, que contenga ruta, por ejemplo la pagina de la home,
 primero creo el modulo y despues su componente que lo encapsula.
+
+
+- todo este proyecto esta gestionado por un Nrwl workspace. que nos permite gestionar multiples apps y librerias
+- todos los comandos de generacion de codigo, se montaran sobre la aplicacion que este en {"defaultProject": "dashboard"}
+
+DISEÑO BASADO EN LIBRERIAS
+si tienes algo en el controller -> lo pones en un servicio (directorio comun de la aplicacion)
+La seiguente evolucion de esta arquitectura es utilizar librerias para elementos compartidos
+
+
+FUNDAMENTOS DE COMPONENTES
+

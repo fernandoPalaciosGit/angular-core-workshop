@@ -11,12 +11,12 @@ CREAR LA APLICACION
 - ng generate @nrwl/angular:application dashboard
 - npm start
 
-CREAR LIBRERIAS
+CREAR LIBRERIAS (¿que elementos podria compartir con otras aplicaicones?)
 - ng generate lib material (interfaces UI material components)
 - ng generate lib core-data (bussiness logic for server side comunication)
 - ng generate lib ui-login -p=ui (interfaz de login)
 - ng generate lib ui-toolbar -p=ui (header con menu de redirecciones)
 
-CREAR COMPONENTES
+CREAR COMPONENTES [home + projects + customers] (¿que elementos principales pertenecen a la interaccion de usuario?)
 - ng generate module home --routing
 - bg generate component home
