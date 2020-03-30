@@ -58,3 +58,14 @@ La seiguente evolucion de esta arquitectura es utilizar librerias para elementos
 
 FUNDAMENTOS DE COMPONENTES
 - una vez que se crea una propiedad en la clase del componente, automaticamente se bindeara con el template
+- declaraciones : * : introduce una directiva de angular (por ejemplo *ngFor) que modifica el DOM
+- declaraciones : (EVENT) : introduce un binding sobre un elemento del DOM
+- $event: referencia local para cada binding de eventos (sacar el target elements)
+- variables de template:
+    - se pueden crear variables de bloque referenciados solo dentro del template, muy util si debes mostrar un output al contradefcir alguna condicion
+    <span *ngIf="condition else inCaseOf">assertion 1</span>
+    <ng-template #inCaseOf>assertion 2</ng-template>
+    - se puede asociar una variable a un componente de libreria que exponga una API
+    <span (click)="materialSidenav.toogle()"></span>
+    <mat-sidenav #materialSidenav opened class="app-sidenav"></mat-sidenav>
+
