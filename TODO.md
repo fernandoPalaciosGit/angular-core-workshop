@@ -9,7 +9,7 @@ tiene los comandos necesarios para contruir el scafolding de los componentes
 
 - CLI: generacion de codigo
 - Blueprints, esquematics environments
-- Nrwl: proyecto construido sobre la CLI, extension de la cli, que soluciona problemas con proyectos de angular para enterprise
+- Nrwl `Norwal`: proyecto construido sobre la CLI, extension de la cli, que soluciona problemas con proyectos de angular para enterprise
 expone un repositorio de Nrwl-workspace: permite organizar multiples proyectos de angular (cli generated) baojo un mismo paraguas
 Como una arquitectura de multi librerias
 -Angular Material.angular.io: pre build tools, que se integran en la applicacion, facil de extender
@@ -58,6 +58,8 @@ La seiguente evolucion de esta arquitectura es utilizar librerias para elementos
 
 FUNDAMENTOS DE COMPONENTES
 - una vez que se crea una propiedad en la clase del componente, automaticamente se bindeara con el template
+- las () "curly brazes" se utilizan para bindear el estado de las propiedades de clase
+- las [] "bracket brazes: property binding: cuando quieres bindear una propiedad a un attributo de html 
 - declaraciones : * : introduce una directiva de angular (por ejemplo *ngFor) que modifica el DOM
 - declaraciones : (EVENT) : introduce un binding sobre un elemento del DOM
 - $event: referencia local para cada binding de eventos (sacar el target elements)
@@ -68,4 +70,4 @@ FUNDAMENTOS DE COMPONENTES
     - se puede asociar una variable a un componente de libreria que exponga una API
     <span (click)="materialSidenav.toogle()"></span>
     <mat-sidenav #materialSidenav opened class="app-sidenav"></mat-sidenav>
-
+- se puede bindear cualquier tipo de evento nativo del browser (click) (mouseover)....incluso eventos propios

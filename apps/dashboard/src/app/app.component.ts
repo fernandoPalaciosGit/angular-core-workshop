@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'workshop-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  @ViewChild('materialSidenav') materialSidenav : MatSidenav;
   title = 'Angular Core WorkShop';
+
+  toggleSideNav() {
+    this.materialSidenav.toggle();
+  }
 }
