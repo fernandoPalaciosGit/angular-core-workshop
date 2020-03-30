@@ -57,4 +57,4 @@ La seiguente evolucion de esta arquitectura es utilizar librerias para elementos
 
 
 FUNDAMENTOS DE COMPONENTES
-
+- una vez que se crea una propiedad en la clase del componente, automaticamente se bindeara con el template
