@@ -20,11 +20,14 @@
 <mat-sidenav-container>
   <mat-sidenav #materialSidenav mode="side" opened class="app-sidenav">
     <nav>
-      <a mat-button class="nav-link">
+      <a mat-button class="nav-link"
+         *ngFor="let link of links"
+         [routerLink]="link.path"
+         [routerLinkActive]="active">
         <mat-icon>
-          <!-- LINK ICON -->
+          {{link.icon}}
         </mat-icon>
-        <!-- LINK LABEL -->
+        {{link.title}}
       </a>
     </nav>
   </mat-sidenav>

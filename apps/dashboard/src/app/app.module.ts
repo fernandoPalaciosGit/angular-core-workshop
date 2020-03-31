@@ -15,10 +15,11 @@ import { UiLoginModule } from '@workshop/ui-login';
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HomeModule,
-    ProjectsModule,
-    CustomersModule,
-    UiLoginModule,
+    // (loading on demand) as we are using lazy loading to the modules routing, we are no longer to load as eagle mode
+    // HomeModule,
+    // ProjectsModule,
+    // CustomersModule,
+    UiLoginModule, // for example purpose, we are loading Login Module after onLoad window
     AppRoutingModule // at the BOTTOM to let lazy load previous Modules
   ],
   providers: [],

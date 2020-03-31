@@ -7,8 +7,13 @@ import { MatSidenav } from '@angular/material/sidenav';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @ViewChild('materialSidenav') materialSidenav : MatSidenav;
+  @ViewChild('materialSidenav') materialSidenav: MatSidenav;
   title = 'Angular Core WorkShop';
+  links = [
+    { path: '/', icon: 'home', title: 'Home' },
+    { path: '/customers', icon: 'face', title: 'Customers' },
+    { path: '/projects', icon: 'work', title: 'Projects' }
+  ];
 
   toggleSideNav() {
     this.materialSidenav.toggle();
