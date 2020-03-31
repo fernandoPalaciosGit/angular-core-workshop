@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Project, ProjectsService } from '@workshop/core-data';
 
 @Component({
   selector: 'workshop-projects',
@@ -7,38 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectsComponent implements OnInit {
   primaryColor = 'red';
-  projects = [
-    {
-      id: '1',
-      title: 'Project One',
-      details: 'This is a sample project',
-      percentComplete: 20,
-      approved: false
-    },
-    {
-      id: '2',
-      title: 'Project Two',
-      details: 'This is a sample project',
-      percentComplete: 40,
-      approved: false
-    },
-    {
-      id: '3',
-      title: 'Project Three',
-      details: 'This is a sample project',
-      percentComplete: 100,
-      approved: true
-    }
-  ];
-  selectedProject;
+  projects: Project[];
+  selectedProject: Project;
 
-  constructor() {
+  // injection dependency by instance, (private) automatically creates local variable this.projectsService
+  constructor(private projectsService: ProjectsService) {
   }
 
+  // lifecycle del componente: despues de bindear todos sus eventes: el moment oportuno de hacer llamada asyncrona al servicio que trae su modelo de datos
   ngOnInit(): void {
+    this.getProjects();
   }
 
-  selectProject(project: {}) {
+  getProjects() {
+    this.projects = this.projectsService.all();
+  }
+
+  selectProject(project) {
     this.selectedProject = project;
   }
 

@@ -82,3 +82,8 @@ ROUTING
     -> en el routing principal (app-routing) se definen el listado de rutas de navegacion (RouterModule.fromRoute([])), que cargaran de manera lazy los modulos
     -> en cada modulo se debe definir como ruta por defecto el componente a cargar (RouterModule.forChild([{path: '', component: testComponent}]))
     -> en resumen tenemos un router principal que define el path de cada feature (module) que adicionalmente manejara el estado asincrono de la pagina en cada una de ellas, y cada Modulo tendra un mapeo de subrutas 
+
+SERVICIO
+- definimos un servcio como una capa de abstraccion de datos
+puede ser para conectar con el servidor y recuperar datos de la sesion o extraer datos de una BBDD: projects.service.ts
+- definimos una interfaz como un schema de los datos de los objetos que va a devolver el servicio: project.ts 
