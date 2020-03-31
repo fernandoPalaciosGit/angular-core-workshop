@@ -76,3 +76,5 @@ ROUTING
 - en una manera de navegar entre features
 - es apropiado tener un archivo standalone para el mapeo de rutas
     - crear un app-route.module.ts que permita importar : RouterModule.forRoot(routes : Routes)
+- utilizamos <router-outlet></router-outlet> para agregar los componentes que se declaran en el mapeo de rutas
+- siempre que se quiera usar un modulo desde una libreri debemos exportar e importar todos los componentes
