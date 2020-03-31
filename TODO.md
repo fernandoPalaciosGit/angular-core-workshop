@@ -71,3 +71,8 @@ FUNDAMENTOS DE COMPONENTES
     <span (click)="materialSidenav.toogle()"></span>
     <mat-sidenav #materialSidenav opened class="app-sidenav"></mat-sidenav>
 - se puede bindear cualquier tipo de evento nativo del browser (click) (mouseover)....incluso eventos propios
+
+ROUTING 
+- en una manera de navegar entre features
+- es apropiado tener un archivo standalone para el mapeo de rutas
+    - crear un app-route.module.ts que permita importar : RouterModule.forRoot(routes : Routes)
