@@ -13,15 +13,16 @@ import { UiLoginModule } from '@workshop/ui-login';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     HomeModule,
     ProjectsModule,
     CustomersModule,
     UiLoginModule,
+    AppRoutingModule // at the BOTTOM to let lazy load previous Modules
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

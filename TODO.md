@@ -75,6 +75,10 @@ FUNDAMENTOS DE COMPONENTES
 ROUTING 
 - en una manera de navegar entre features
 - es apropiado tener un archivo standalone para el mapeo de rutas
-    - crear un app-route.module.ts que permita importar : RouterModule.forRoot(routes : Routes)
+    -> crear un app-route.module.ts que permita importar : RouterModule.forRoot(routes : Routes)
 - utilizamos <router-outlet></router-outlet> para agregar los componentes que se declaran en el mapeo de rutas
 - siempre que se quiera usar un modulo desde una libreri debemos exportar e importar todos los componentes
+- laizy loading del routing de cada componente
+    -> en el routing principal (app-routing) se definen el listado de rutas de navegacion (RouterModule.fromRoute([])), que cargaran de manera lazy los modulos
+    -> en cada modulo se debe definir como ruta por defecto el componente a cargar (RouterModule.forChild([{path: '', component: testComponent}]))
+    -> en resumen tenemos un router principal que define el path de cada feature (module) que adicionalmente manejara el estado asincrono de la pagina en cada una de ellas, y cada Modulo tendra un mapeo de subrutas 
