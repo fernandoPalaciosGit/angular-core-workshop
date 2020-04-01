@@ -91,3 +91,10 @@ puede ser para conectar con el servidor y recuperar datos de la sesion o extraer
 
 FAKE REST API
 - utilizamos el modulo de npm json-server para levantar un server (localhost:3000) sobre un json a harcodeado en un directorio (/server/db.json)
+
+
+PROPIEDADES DE TIPO OBSERVABLE
+un obsevable es un stream de datos
+se puede asignar a una request http
+las propiedades de este tipo se declaran con un $ al final del nombre (projects$)
+al recubir instrucciones asincronas, en el render del template se debe especificar con un pipe async (projects$ | async)

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Project, ProjectsService } from '@workshop/core-data';
+import { filter } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'workshop-projects',
@@ -8,21 +10,27 @@ import { Project, ProjectsService } from '@workshop/core-data';
 })
 export class ProjectsComponent implements OnInit {
   primaryColor = 'red';
-  projects: Project[];
+  projects$: Observable<Project[]>;
   selectedProject: Project;
 
   // injection dependency by instance, (private) automatically creates local variable this.projectsService
   constructor(private projectsService: ProjectsService) {
   }
 
-  // lifecycle del componente: despues de bindear todos sus eventes: el moment oportuno de hacer llamada asyncrona al servicio que trae su modelo de datos
+  // lifecycle hook del componente: despues de bindear todos sus eventes: el moment oportuno de hacer llamada asyncrona al servicio que trae su modelo de datos
   ngOnInit(): void {
     this.getProjects();
   }
 
   getProjects() {
+    this.projects$ = this.projectsService.all();
+  }
+
+  getApprovedProjects() {
     this.projectsService.all()
-      .subscribe((result: Project[]) => this.projects = result);
+      .pipe(
+        filter((project: Project) => project.approved)
+      );
   }
 
   selectProject(project) {
