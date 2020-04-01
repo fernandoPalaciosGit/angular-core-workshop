@@ -21,7 +21,8 @@ export class ProjectsComponent implements OnInit {
   }
 
   getProjects() {
-    this.projects = this.projectsService.all();
+    this.projectsService.all()
+      .subscribe((result: Project[]) => this.projects = result);
   }
 
   selectProject(project) {

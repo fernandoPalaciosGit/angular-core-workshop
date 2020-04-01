@@ -87,3 +87,7 @@ SERVICIO
 - definimos un servcio como una capa de abstraccion de datos
 puede ser para conectar con el servidor y recuperar datos de la sesion o extraer datos de una BBDD: projects.service.ts
 - definimos una interfaz como un schema de los datos de los objetos que va a devolver el servicio: project.ts 
+
+
+FAKE REST API
+- utilizamos el modulo de npm json-server para levantar un server (localhost:3000) sobre un json a harcodeado en un directorio (/server/db.json)
