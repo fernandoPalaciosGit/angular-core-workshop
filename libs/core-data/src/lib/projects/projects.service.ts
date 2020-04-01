@@ -7,13 +7,33 @@ import { Observable } from 'rxjs';
 })
 
 export class ProjectsService {
-  readonly BASE_URL: string = 'http://localhost:3000';
+  readonly BASE_URL: string = 'http://localhost:4000';
   private model: string = 'projects';
 
   constructor(private httpClient: HttpClient) {
   }
 
+  getUrl() {
+    return `${this.BASE_URL}/${this.model}`;
+  }
+
+  getUrlForId(id) {
+    return `${this.getUrl()}/${id}`;
+  }
+
   all(): Observable<any> {
-    return this.httpClient.get(`${this.BASE_URL}/${this.model}`);
+    return this.httpClient.get(this.getUrl());
+  }
+
+  create(project): Observable<any> {
+    return this.httpClient.post(this.getUrl(), project);
+  }
+
+  update(project): Observable<any> {
+    return this.httpClient.patch(this.getUrlForId(project.id), project);
+  }
+
+  delete(project): Observable<any> {
+    return this.httpClient.delete(this.getUrlForId(project.id));
   }
 }

@@ -26,6 +26,11 @@ export class ProjectsComponent implements OnInit {
     this.projects$ = this.projectsService.all();
   }
 
+  deleteProject(project) {
+    this.projectsService.delete(project)
+      .subscribe(() => this.getProjects());
+  }
+
   getApprovedProjects() {
     this.projectsService.all()
       .pipe(

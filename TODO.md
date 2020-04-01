@@ -94,7 +94,9 @@ FAKE REST API
 
 
 PROPIEDADES DE TIPO OBSERVABLE
-un obsevable es un stream de datos
-se puede asignar a una request http
-las propiedades de este tipo se declaran con un $ al final del nombre (projects$)
-al recubir instrucciones asincronas, en el render del template se debe especificar con un pipe async (projects$ | async)
+- un obsevable es un stream de datos
+- se puede asignar a una request http
+- las propiedades de este tipo se declaran con un $ al final del nombre (projects$)
+- al recubir instrucciones asincronas, en el render del template se debe especificar con un pipe async (projects$ | async)
+- https://angular.io/guide/observables
+- el pipe async tambien se encarga de esliminar la suscripcion del observer, cuando el stream de datos ya ha finalizado la carga en memoria (cuando ya se pintan los datos, el observable desaparece)
