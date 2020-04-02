@@ -9,6 +9,10 @@
   </div>
   <!-- PROJECT DETAILS -->
   <div class="col-50">
-    <workshop-project-form></workshop-project-form>
+    <workshop-project-form
+      [project]="selectedProject"
+      (saved)="saveProject($event)"
+      (reset)="resetProjects()">
+    </workshop-project-form>
   </div>
 </div>
