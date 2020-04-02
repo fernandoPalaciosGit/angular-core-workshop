@@ -111,3 +111,12 @@ INTERFACE
 - () : parentesis are events
 - [] : brackets say that bind to properties (2 way data binding)
 - USE WHEN WE NEED TO SINCRONIZE DATA WITH THE OUTPUT: for example inputs form
+
+
+SHARE MUTABLE STATE problema con el estado de las propiedaddes mutadas
+- el ngBinding nos permite tener como referencia una propiedad del modelo, pero no queremos que se replique su esttado en todo el component 
+- es peligroso tener en una aplicacion un estado de una propiedad mutable en mas de un sitio (porque otros componentes de la aplcaicion podrian estar usando esas otras parates mutadas con valores impredecibles)
+- por ejemplo el caso del formulario: nosotros estamos manipulando el valor del titulo a traves de un control, pero vemos reflejado ese valor mutado en el header y en la lista de projectos. Esto es peligroso porque transversalmente, algunna otra parte de la aplicacion podria estar usando esos valores mnutados que en realdad no nos interesa cambiar (porque en este caso solo estamos modificando el valor del control)
+- todo esto es debido al comportamiento de las funciones de primer grado de Javascript, por las cuales un argumento se pasa por referencia
+- todo esto ocurre porque el estado de esa propiedad se comparte en en varias partes del componente a tratar.
+como solucion, se deben isolar por sub-componentes y bindearlas con @Input / @Output
