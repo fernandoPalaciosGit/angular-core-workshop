@@ -28,9 +28,17 @@ export class ProjectsComponent implements OnInit {
 
   deleteProject(project: Project) {
     this.projectsService.delete(project)
-      .subscribe(() => {
-        this.resetProjects();
-      });
+      .subscribe(() => this.resetProjects());
+  }
+
+  createProject(project: Project) {
+    this.projectsService.create(project)
+      .subscribe(() => this.resetProjects());
+  }
+
+  updateProject(project: Project) {
+    this.projectsService.update(project)
+      .subscribe(() => this.resetProjects());
   }
 
   getApprovedProjects() {
@@ -49,7 +57,11 @@ export class ProjectsComponent implements OnInit {
     this.getProjects();
   }
 
-  saveProject(selectedProject: Project) {
-    console.log(selectedProject);
+  saveProject(project: Project) {
+    if (!project.id) {
+      this.createProject(project);
+    } else {
+      this.updateProject(project);
+    }
   }
 }
