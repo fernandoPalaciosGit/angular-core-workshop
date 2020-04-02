@@ -120,3 +120,11 @@ SHARE MUTABLE STATE problema con el estado de las propiedaddes mutadas
 - todo esto es debido al comportamiento de las funciones de primer grado de Javascript, por las cuales un argumento se pasa por referencia
 - todo esto ocurre porque el estado de esa propiedad se comparte en en varias partes del componente a tratar.
 como solucion, se deben isolar por sub-componentes y bindearlas con @Input / @Output
+
+SOLUCION
+si quieres compartir el estado (quieres pintar la propiedad en varios sitios del componente): haz un mutable (se conectara con los es) (en donde este la referenmcia, cambiara su estado)
+si quieres mutar el estado (quieres cambiar la propiedad): aislalo en  un componente, asi nunca se compartira
+
+EVENTOS QUE QUIERES COMUNICAR DESDE UN ELEMENTO HIJO
+@Outout(): siempre lo inicializas como un new EventEmitter();
+    es decir en vez de manejar el evento en el componente hijo, lo emites/lanzas (trigger) y lo manejas por el componente padre

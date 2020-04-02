@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements OnInit {
-  primaryColor = 'red';
   selectedProject: Project;
   projects$: Observable<Project[]>;
 
