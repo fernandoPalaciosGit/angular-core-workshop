@@ -5,3 +5,11 @@ export interface Project {
   percentComplete: number,
   approved: boolean
 }
+
+export const getEmptyProject = (): Project => ({
+  id: '',
+  title: '',
+  details: '',
+  percentComplete: 0,
+  approved: false
+});

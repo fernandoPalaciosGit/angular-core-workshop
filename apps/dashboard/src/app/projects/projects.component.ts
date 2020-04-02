@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Project, ProjectsService } from '@workshop/core-data';
+import { getEmptyProject, Project, ProjectsService } from '@workshop/core-data';
 import { filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
@@ -10,8 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class ProjectsComponent implements OnInit {
   primaryColor = 'red';
-  projects$: Observable<Project[]>;
   selectedProject: Project;
+  projects$: Observable<Project[]>;
 
   // injection dependency by instance, (private) automatically creates local variable this.projectsService
   constructor(private projectsService: ProjectsService) {
@@ -19,7 +19,7 @@ export class ProjectsComponent implements OnInit {
 
   // lifecycle hook del componente: despues de bindear todos sus eventes: el moment oportuno de hacer llamada asyncrona al servicio que trae su modelo de datos
   ngOnInit(): void {
-    this.getProjects();
+    this.resetProjects();
   }
 
   getProjects() {
@@ -29,8 +29,7 @@ export class ProjectsComponent implements OnInit {
   deleteProject(project: Project) {
     this.projectsService.delete(project)
       .subscribe(() => {
-        this.getProjects();
-        this.cancel();
+        this.resetProjects();
       });
   }
 
@@ -45,7 +44,8 @@ export class ProjectsComponent implements OnInit {
     this.selectedProject = project;
   }
 
-  cancel() {
-    this.selectProject(null);
+  resetProjects() {
+    this.selectProject(getEmptyProject());
+    this.getProjects();
   }
 }

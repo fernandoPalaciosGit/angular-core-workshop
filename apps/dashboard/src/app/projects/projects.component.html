@@ -32,20 +32,20 @@
     <mat-card>
       <mat-card-header>
         <mat-card-title>
-          <h1 *ngIf="selectedProject else emptySelected">
+          <h1 *ngIf="selectedProject.title else emptySelected">
             {{ selectedProject.title }}
           </h1>
           <ng-template #emptySelected>Select a Project</ng-template>
         </mat-card-title>
       </mat-card-header>
-      <form *ngIf="selectedProject">
+      <form *ngIf="selectedProject.id">
         <mat-card-content>
           <pre>{{ selectedProject | json }}</pre>
         </mat-card-content>
         <mat-card-actions>
           <button type="submit" mat-button color="primary">Save</button>
           <button type="button" mat-button
-                  (click)="cancel()">Cancel
+                  (click)="resetProjects()">Cancel
           </button>
         </mat-card-actions>
       </form>

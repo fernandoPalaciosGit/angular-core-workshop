@@ -100,3 +100,9 @@ PROPIEDADES DE TIPO OBSERVABLE
 - al recubir instrucciones asincronas, en el render del template se debe especificar con un pipe async (projects$ | async)
 - https://angular.io/guide/observables
 - el pipe async tambien se encarga de esliminar la suscripcion del observer, cuando el stream de datos ya ha finalizado la carga en memoria (cuando ya se pintan los datos, el observable desaparece)
+
+INTERFACE
+- es solo la declaracion de propiedades y sus tipos que un objeto debe cumplir
+- NO define el mvalor inicial de cada propiedad
+- si se desea tener un objeto Dummy de esa interfaz: crear una factoria de ese objeto, como si fuera un POJO
+    que no es mas que una funcion que devuelve el mismo tipo de objeto pero con una copia de sus propiedades con sus valores por defecto
