@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProjectFormComponent } from './project-form.component';
+import { MaterialModule } from '@workshop/material';
+import { FormsModule } from '@angular/forms';
 
 describe('ProjectFormComponent', () => {
   let component: ProjectFormComponent;
@@ -8,15 +10,16 @@ describe('ProjectFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProjectFormComponent ]
+      declarations: [ProjectFormComponent],
+      imports: [MaterialModule, FormsModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ProjectFormComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
   it('should create', () => {

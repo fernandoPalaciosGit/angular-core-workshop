@@ -1,3 +1,8 @@
+DEPLOYMENT
+- npm i
+- npm run start
+- npm run server
+
 CREAR PROYECTO DE TIPO NPX
 - npx create-nx-workspace angular-core-workshop --preset=empty --cli=angular --npmScope=workshop
 - cd create-nx-workspace

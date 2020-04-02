@@ -8,7 +8,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 })
 export class AppComponent {
   @ViewChild('materialSidenav') materialSidenav: MatSidenav;
-  title = 'Angular Core WorkShop';
+  title = 'Project Dashboard';
   links = [
     { path: '/', icon: 'home', title: 'Home' },
     { path: '/customers', icon: 'face', title: 'Customers' },
