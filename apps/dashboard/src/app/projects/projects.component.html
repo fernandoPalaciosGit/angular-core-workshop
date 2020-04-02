@@ -1,7 +1,7 @@
 <div class="container">
   <!-- PROJECTS LIST -->
   <div class="col-50">
-    <workshop-projects-list></workshop-projects-list>
+    <workshop-projects-list [projects]="projects$ | async"></workshop-projects-list>
   </div>
   <!-- PROJECT DETAILS -->
   <div class="col-50">
