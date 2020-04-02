@@ -106,3 +106,8 @@ INTERFACE
 - NO define el mvalor inicial de cada propiedad
 - si se desea tener un objeto Dummy de esa interfaz: crear una factoria de ese objeto, como si fuera un POJO
     que no es mas que una funcion que devuelve el mismo tipo de objeto pero con una copia de sus propiedades con sus valores por defecto
+
+[(ngModel)]
+- () : parentesis are events
+- [] : brackets say that bind to properties (2 way data binding)
+- USE WHEN WE NEED TO SINCRONIZE DATA WITH THE OUTPUT: for example inputs form

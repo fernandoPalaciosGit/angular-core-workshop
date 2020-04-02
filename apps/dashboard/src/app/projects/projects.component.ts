@@ -48,4 +48,8 @@ export class ProjectsComponent implements OnInit {
     this.selectProject(getEmptyProject());
     this.getProjects();
   }
+
+  saveProject(selectedProject: Project) {
+    console.log(selectedProject);
+  }
 }
