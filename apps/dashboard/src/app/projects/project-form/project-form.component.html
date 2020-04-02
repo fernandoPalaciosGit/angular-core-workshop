@@ -1,28 +1,28 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>
-      <h1 *ngIf="project.id else emptySelected">
-        Update {{ project.title }}
+      <h1 *ngIf="titleProject else emptySelected">
+        Update {{ titleProject }}
       </h1>
       <ng-template #emptySelected>
         <h1>Create new project</h1>
       </ng-template>
     </mat-card-title>
   </mat-card-header>
-  <form (submit)="saved.emit(project)">
+  <form (submit)="saved.emit(formControlProject)">
     <mat-card-content>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Title" [(ngModel)]="project.title" type="text" name="title"/>
+        <input matInput placeholder="Title" [(ngModel)]="formControlProject.title" type="text" name="title"/>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <textarea matInput placeholder="Details" [(ngModel)]="project.details" type="text" name="details"></textarea>
+        <textarea matInput placeholder="Details" [(ngModel)]="formControlProject.details" type="text" name="details"></textarea>
       </mat-form-field>
       <section class="full-width">
-        <h4>{{project.percentComplete}}% complete</h4>
-        <mat-slider class="full-width" min="0" max="100" thumbLabel [(ngModel)]="project.percentComplete" name="percentComplete"></mat-slider>
+        <h4>{{formControlProject.percentComplete}}% complete</h4>
+        <mat-slider class="full-width" min="0" max="100" thumbLabel [(ngModel)]="formControlProject.percentComplete" name="percentComplete"></mat-slider>
       </section>
       <section class="full-width">
-        <mat-checkbox [(ngModel)]="project.approved" name="approve">Approve by Customer</mat-checkbox>
+        <mat-checkbox [(ngModel)]="formControlProject.approved" name="approve">Approve by Customer</mat-checkbox>
       </section>
     </mat-card-content>
     <mat-card-actions>

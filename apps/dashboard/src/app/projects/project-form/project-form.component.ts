@@ -7,7 +7,14 @@ import { Project } from '@workshop/core-data';
   styleUrls: ['./project-form.component.css']
 })
 export class ProjectFormComponent implements OnInit {
-  @Input() project: Project;
+  formControlProject: Project;
+  titleProject: string;
+
+  @Input() set project(selectedProject: Project) {
+    this.formControlProject = { ...selectedProject };
+    this.titleProject = selectedProject.title;
+  }
+
   @Output() saved = new EventEmitter();
   @Output() reset = new EventEmitter();
 
@@ -16,5 +23,4 @@ export class ProjectFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
