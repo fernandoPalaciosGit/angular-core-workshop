@@ -26,9 +26,12 @@ export class ProjectsComponent implements OnInit {
     this.projects$ = this.projectsService.all();
   }
 
-  deleteProject(project) {
+  deleteProject(project: Project) {
     this.projectsService.delete(project)
-      .subscribe(() => this.getProjects());
+      .subscribe(() => {
+        this.getProjects();
+        this.cancel();
+      });
   }
 
   getApprovedProjects() {
@@ -38,7 +41,7 @@ export class ProjectsComponent implements OnInit {
       );
   }
 
-  selectProject(project) {
+  selectProject(project: Project) {
     this.selectedProject = project;
   }
 
