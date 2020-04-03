@@ -1,16 +1,24 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ProjectsService } from './projects.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ProjectsService', () => {
   let service: ProjectsService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [ProjectsService]
+    });
     service = TestBed.inject(ProjectsService);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('check url service', () => {
+    expect(service.getUrl()).toContain('localhost');
   });
 });

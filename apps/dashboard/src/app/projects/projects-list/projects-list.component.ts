@@ -10,8 +10,8 @@ export class ProjectsListComponent implements OnInit {
   @Input() projects: Project[]; // no va a ser un observable como el del componente padre, porque lo vamos a utilizar como campo de entrada (lectura, NO va a mutar)
   @Output() selected = new EventEmitter();
   @Output() deleted = new EventEmitter();
-  private primaryColor: string = 'red';
-  private readonly: boolean = false;
+  primaryColor: string = 'red';
+  readonly: boolean = false;
 
   constructor() {
   }

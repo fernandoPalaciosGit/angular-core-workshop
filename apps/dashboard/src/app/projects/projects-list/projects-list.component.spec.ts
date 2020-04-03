@@ -2,26 +2,28 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProjectsListComponent } from './projects-list.component';
 import { MaterialModule } from '@workshop/material';
+import { DebugElement } from '@angular/core';
 
 describe('ProjectsListComponent', () => {
-  let component: ProjectsListComponent;
   let fixture: ComponentFixture<ProjectsListComponent>;
+  let projectsListComponent: ProjectsListComponent;
+  let spyComponent: DebugElement;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ProjectsListComponent ],
+  beforeEach(async () => {
+    fixture = TestBed.configureTestingModule({
+      declarations: [ProjectsListComponent],
       imports: [MaterialModule]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ProjectsListComponent);
-    component = fixture.componentInstance;
+    }).createComponent(ProjectsListComponent);
+    projectsListComponent = fixture.componentInstance;
+    spyComponent = fixture.debugElement;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should crate the component', () => {
+    expect(projectsListComponent).toBeTruthy();
+  });
+
+  it('should have a primary color', () => {
+    expect(projectsListComponent.primaryColor).toBe('red');
   });
 });
