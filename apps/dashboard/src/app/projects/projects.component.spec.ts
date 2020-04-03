@@ -7,13 +7,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProjectFormComponent } from './project-form/project-form.component';
 import { ProjectsListComponent } from './projects-list/projects-list.component';
 import { DebugElement } from '@angular/core';
-import { getEmptyProject, Project } from '@workshop/core-data';
+import { getEmptyProject, Project, ProjectsService } from '@workshop/core-data';
 
 describe('Test Projects Dashboards', () => {
   let project: Project;
-  let spyComponent: DebugElement;
+  let projectDebug: DebugElement;
   let projectsComponent: ProjectsComponent;
   let fixture: ComponentFixture<ProjectsComponent>;
+  let projectService: ProjectsService;
+  const ProjectsServiceMock = {};
 
   beforeEach(async () => {
     fixture = TestBed.configureTestingModule({
@@ -22,6 +24,10 @@ describe('Test Projects Dashboards', () => {
         ProjectFormComponent,
         ProjectsListComponent
       ],
+      providers: [
+        // inject the project service, but override the methods (for stub results in the projects request)
+        { provide: ProjectsService, useValue: ProjectsServiceMock }
+      ],
       imports: [
         MaterialModule,
         FormsModule,
@@ -29,8 +35,10 @@ describe('Test Projects Dashboards', () => {
         HttpClientModule
       ]
     }).createComponent(ProjectsComponent);
-    spyComponent = fixture.debugElement;
     projectsComponent = fixture.componentInstance;
+    projectDebug = fixture.debugElement;
+    // this allow to spy the service that would be injected in the Projects component (by the debug)
+    projectService = projectDebug.injector.get(ProjectsService);
   });
 
   it('should update selected product', () => {
