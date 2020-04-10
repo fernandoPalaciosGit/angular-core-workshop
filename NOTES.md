@@ -188,3 +188,9 @@ REDUCER <----- @Output (event emiters) <----- child component
 #### EFFECTS (side effects) : acciones asincronas : tenemos que comunicar una accion fuera de la aplicacion
 ##### SELECTOR: computar dos modelos juntos
 
+#### STORE
+1 - creamos un feature.store por cada componente (en nuestra libreria de core-data)
+2 - por reducer creamos:
+ - esquema de datos del reducer: interface ProjectState
+ - modelo inicial del reducer: object initialState: ProjectState
+ - reducer: function (state, action) {}

@@ -1,4 +1,4 @@
-import { Project } from '@workshop/core-data';
+import { getEmptyProject, Project } from '@workshop/core-data';
 
 const initialProjects: Project[] = [
   {
@@ -32,3 +32,23 @@ const updateProject = (projects, project) => projects.map(p => {
   return p.id === project.id ? Object.assign({}, project) : p;
 });
 const deleteProject = (projects, project) => projects.filter(w => project.id !== w.id);
+
+// 1º - defnnir el esquema del reducer
+export interface ProjectState {
+  projectList: Project[],
+  projectSelectedId: string | null,
+}
+
+// 2º - definir el estado inicial del reducer
+export const initialState: ProjectState = {
+  projectList: [getEmptyProject()],
+  projectSelectedId: null
+};
+
+// 3º - construir el reducer
+export const projectReducer = (state = initialState, action): ProjectState => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
