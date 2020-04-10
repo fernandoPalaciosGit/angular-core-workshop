@@ -12,6 +12,9 @@ AÑADIR DEPENDENCIAS
 - ng add @nrwl/angular
 - ng add @angular/material
 
+AÑADIR DEPENDENCIAS DE NGRX
+- npm i @ngrx/store @ngrx/entity @ngrx/store-devtools @ngrx/effects @nrwl/nx --save
+
 CREAR LA APLICACION
 - ng generate @nrwl/angular:application dashboard
 - npm start

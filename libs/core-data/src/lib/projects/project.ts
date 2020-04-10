@@ -4,6 +4,7 @@ export interface Project {
   details: string,
   percentComplete: number,
   approved: boolean
+  customerId: string,
 }
 
 export const getEmptyProject = (): Project => ({
@@ -11,5 +12,6 @@ export const getEmptyProject = (): Project => ({
   title: '',
   details: '',
   percentComplete: 0,
-  approved: false
+  approved: false,
+  customerId: '',
 });
