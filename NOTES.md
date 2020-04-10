@@ -128,3 +128,63 @@ si quieres mutar el estado (quieres cambiar la propiedad): aislalo en  un compon
 EVENTOS QUE QUIERES COMUNICAR DESDE UN ELEMENTO HIJO
 @Outout(): siempre lo inicializas como un new EventEmitter();
     es decir en vez de manejar el evento en el componente hijo, lo emites/lanzas (trigger) y lo manejas por el componente padre
+
+
+NGRX
+es un conjunto de librerias que tienen como objetivo aplicar la texnologia de redux en las aplicaciones de angular.
+Principal objetivo es el MANEJO DE ESTADO DE LA APLCACION
+
+SERIALIZACION
+como actua? : serializa los datos a traves de Observables (manejo asincrono de streams de datos) que permite una prediccion estable de los datos almacenados
+tiene como suplemento la utilidad para desarrolladores que permite monitorizar los datos
+
+
+STORE: interfaz que usan para redux: encapsulacion, single responsability, testing isolated, manage single inmutable state
+
+¿que casos se utiliza?: Ideal en los entornos UI web, cuando datos provistos de recursos extenos y en memoria que compiten al mismo tiempo de manera asincrona a traves de las acciones del usuario
+
+
+STORES (REDUX FLOW)
+anaxioma redux: MANTENER EL ESTADO (esquema de nodos) EN UN UNICO LUGAR. Es decir evitamos mantener los datos en los componentes, se guardaras a partir de ahora en los STORES
+
+por lo tanto sera el objetivo de mantener sincroinizado los componentes y los sevicios con los STORES de la aplicacion 
+El flow control se vuelve mas sencillo: ahora todos atacan al store.
+
+1 -> Store
+2 -> componentes y servicios
+3 -> recursos externos
+
+
+INTERFAZ COMO ESTADO DE LA APLCICAION
+normalmente se define el /state como una libreria -> libs/core-data/src/libs/state
+en el index.ts, exportaremos una interfaz (que sera el store AppState) y un reducer que sera donde se manejara el estado (ActionReducerMap<AppState>)
+
+
+## 3 CONCEPTOS DE REDUX
+STORE (SINGLE STATE TREE) (informacion inmutable): todo el estado de la aplcacion se encuentra isolado en un unico arbos de estado
+FLOW DOWN (descarga de informacion): estado se descarga a la aplicacion desde el state tree
+REDUCER (FLOW UP -> puedes mutar la aplicacion): captura los eventos para subir la informacion al state tree
+
+los metodos dentro del reducer se encargan de mutar los datos -> crean nuevos estados de la aplicacion para actualizar el state tree
+PERFORMANCE: en angular cada vez que hay un cambio el binding de las propiedades se mira a traves de todo su arbol de estado a ver si hay cambios (DEEP COMPARATION), esto es muy caro. Ahora lo que ocurre es que si hay un cambio, lo cede al reducer para que haga push al state tree y se suscribe a los cambio de este.
+Los reducer son tablas donde organizar tu modelo de datos, tendras entidades que funcinan como esquemas de tu Store.
+comunicamos los cambios a mutar con el reducer a traves de ACCIONES
+
+pull de datos del STORE ------> QUERY ------> APP
+    ^^^^
+    ||||
+push de datos al REDUCER <------- ACCTIONS <------ APP
+
+### OBSERVER
+To este sistema esta soportado por Observables, esto permite sincronizar automaticamemnte los streams datos que fluyen en la aplicaicon a taves de endpoints (REDUCER (push, consumer), STORE (pull, producer))
+
+
+### REDUX EN LOS COMPONENTES
+STORE ---> @Input ---> child component
+^^^^
+|||
+REDUCER <----- @Output (event emiters) <----- child component
+
+#### EFFECTS (side effects) : acciones asincronas : tenemos que comunicar una accion fuera de la aplicacion
+##### SELECTOR: computar dos modelos juntos
+

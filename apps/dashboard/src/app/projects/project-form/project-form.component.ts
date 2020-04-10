@@ -11,7 +11,7 @@ export class ProjectFormComponent implements OnInit {
   titleProject: string;
 
   @Input() set project(selectedProject: Project) {
-    this.formControlProject = { ...selectedProject };
+    this.formControlProject = { ...selectedProject };// shallow copy, just one level, nested objects would be references
     this.titleProject = selectedProject.title;
   }
 
