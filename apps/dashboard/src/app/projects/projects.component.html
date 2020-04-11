@@ -1,11 +1,12 @@
 <div class="container">
   <!-- PROJECTS LIST -->
   <div class="col-50">
-    <workshop-projects-list
-      [projects]="projects$ | async"
-      (deleted)="deleteProject($event)"
-      (selected)="selectProject($event)">
-    </workshop-projects-list>
+    <pre>{{ projects$ | async | json }}</pre>
+    <!--    <workshop-projects-list-->
+    <!--      [projects]="projects$ | async"-->
+    <!--      (deleted)="deleteProject($event)"-->
+    <!--      (selected)="selectProject($event)">-->
+    <!--    </workshop-projects-list>-->
   </div>
   <!-- PROJECT DETAILS -->
   <div class="col-50">

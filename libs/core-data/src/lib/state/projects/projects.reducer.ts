@@ -1,31 +1,4 @@
-import { getEmptyProject, Project } from '@workshop/core-data';
-
-const initialProjects: Project[] = [
-  {
-    id: '1',
-    title: 'Project One',
-    details: 'This is a sample project',
-    percentComplete: 20,
-    approved: false,
-    customerId: null
-  },
-  {
-    id: '2',
-    title: 'Project Two',
-    details: 'This is a sample project',
-    percentComplete: 40,
-    approved: false,
-    customerId: null
-  },
-  {
-    id: '3',
-    title: 'Project Three',
-    details: 'This is a sample project',
-    percentComplete: 100,
-    approved: true,
-    customerId: null
-  }
-];
+import { initialProjectList, Project } from '@workshop/core-data';
 
 const createProject = (projects, project) => [...projects, project];
 const updateProject = (projects, project) => projects.map(p => {
@@ -41,13 +14,14 @@ export interface ProjectState {
 
 // 2º - definir el estado inicial del reducer
 export const initialState: ProjectState = {
-  projectList: [getEmptyProject()],
+  projectList: initialProjectList,
   projectSelectedId: null
 };
 
 // 3º - construir el reducer
-export const projectReducer = (state = initialState, action): ProjectState => {
+export const projectReducer = (state: ProjectState = initialState, action): ProjectState => {
   switch (action.type) {
+    // pasos a seguir para sincronizar datos son el reducer: signar un action.type y delear a un metodo standalona ---> PORQUE ES TESTEABLE
     default:
       return state;
   }
