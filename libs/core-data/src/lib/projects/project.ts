@@ -1,10 +1,10 @@
 export interface Project {
-  id: string,
-  title: string,
-  details: string,
-  percentComplete: number,
-  approved: boolean
-  customerId: string,
+  id: string;
+  title: string;
+  details: string;
+  percentComplete: number;
+  approved: boolean;
+  customerId: string;
 }
 
 export const getEmptyProject = (): Project => ({

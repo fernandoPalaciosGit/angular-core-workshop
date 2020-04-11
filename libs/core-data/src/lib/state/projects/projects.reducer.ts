@@ -9,8 +9,8 @@ const deleteProject = (projects, project) => projects.filter(p => project.id !==
 
 // 1º - defnnir el esquema del reducer
 export interface ProjectState {
-  projectList: Project[],
-  projectSelectedId: string | null,
+  projectList: Project[];
+  projectSelectedId: string | null;
 }
 
 // 2º - definir el estado inicial del reducer

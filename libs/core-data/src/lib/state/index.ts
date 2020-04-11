@@ -6,8 +6,8 @@ import { storeFreeze } from 'ngrx-store-freeze';
 
 // import the type of reducers
 export interface AppState {
-  customers: fromCustomers.CustomersState,
-  projects: fromProjects.ProjectState,
+  projects: fromProjects.ProjectState;
+  customers: fromCustomers.CustomersState;
 }
 
 // Add the reducers to the App state

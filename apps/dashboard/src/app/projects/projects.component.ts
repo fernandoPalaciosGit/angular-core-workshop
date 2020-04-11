@@ -34,18 +34,30 @@ export class ProjectsComponent implements OnInit {
   }
 
   deleteProject(project: Project) {
-    this.projectsService.delete(project)
-      .subscribe(() => this.resetProjects());
+    // this.projectsService.delete(project)
+    //   .subscribe(() => this.resetProjects());
+    this.store.dispatch({
+      type: 'delete',
+      payload: project,
+    })
   }
 
   createProject(project: Project) {
-    this.projectsService.create(project)
-      .subscribe(() => this.resetProjects());
+    // this.projectsService.create(project)
+    //   .subscribe(() => this.resetProjects());
+    this.store.dispatch({
+      type: 'create',
+      payload: project
+    });
   }
 
   updateProject(project: Project) {
-    this.projectsService.update(project)
-      .subscribe(() => this.resetProjects());
+    // this.projectsService.update(project)
+    //   .subscribe(() => this.resetProjects());
+    this.store.dispatch({
+      type: 'update',
+      payload: project
+    })
   }
 
   getApprovedProjects() {
