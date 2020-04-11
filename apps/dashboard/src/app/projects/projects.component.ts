@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { getEmptyProject, Project, ProjectsService, ProjectState } from '@workshop/core-data';
+import { CreateProject, DeleteProject, getEmptyProject, Project, ProjectsService, ProjectState, UpdateProject } from '@workshop/core-data';
 import { filter, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
@@ -16,7 +16,7 @@ export class ProjectsComponent implements OnInit {
   // injection dependency by instance, (private) automatically creates local variable this.projectsService
   constructor(
     private projectsService: ProjectsService,
-    private store: Store<ProjectState> // MAGIA: Store <--> Reducer
+    private store: Store<any> // MAGIA: Store <--> Reducer
   ) {
     this.projects$ = store.pipe(
       select('projects'), // seleccionamos el estado de la aplicaicon que querramos sincronizar (pull del store)
@@ -36,28 +36,19 @@ export class ProjectsComponent implements OnInit {
   deleteProject(project: Project) {
     // this.projectsService.delete(project)
     //   .subscribe(() => this.resetProjects());
-    this.store.dispatch({
-      type: 'delete',
-      payload: project,
-    })
+    this.store.dispatch(new DeleteProject(project));
   }
 
   createProject(project: Project) {
     // this.projectsService.create(project)
     //   .subscribe(() => this.resetProjects());
-    this.store.dispatch({
-      type: 'create',
-      payload: project
-    });
+    this.store.dispatch(new CreateProject(project));
   }
 
   updateProject(project: Project) {
     // this.projectsService.update(project)
     //   .subscribe(() => this.resetProjects());
-    this.store.dispatch({
-      type: 'update',
-      payload: project
-    })
+    this.store.dispatch(new UpdateProject(project));
   }
 
   getApprovedProjects() {

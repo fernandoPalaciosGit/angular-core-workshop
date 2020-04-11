@@ -1,4 +1,5 @@
 import { initialProjectList, Project } from '@workshop/core-data';
+import { ProjectActionTypes } from './projects.actions';
 
 // todos devuelven una copia del del proyecto -> evitamos mutabilidad por referencia a otras partes de la aplicacion que usen projects
 const createProject = (projects, project) => [...projects, project];
@@ -25,25 +26,25 @@ export const projectReducer = (state: ProjectState = initialState, action): Proj
   // lo que se quiere devolver en el reducer es un sestado nuevo para cada AppState
   switch (action.type) {
     // pasos a seguir para sincronizar datos son el reducer: signar un action.type y delear a un metodo standalona ---> PORQUE ES TESTEABLE
-    case 'select':
+    case ProjectActionTypes.SelectProject:
       return {
         // payload: projecto que enviamos por la interfac a crear
         projectList: state.projectList,
         projectSelectedId: action.payload
       };
-    case 'create':
+    case ProjectActionTypes.CreateProject:
       return {
         // payload: projecto que enviamos por la interfac a crear
         projectList: createProject(state.projectList, action.payload),
         projectSelectedId: state.projectSelectedId
       };
-    case 'update':
+    case ProjectActionTypes.UpdateProject:
       return {
         // payload: projecto que enviamos por la interfac a crear
         projectList: updateProject(state.projectList, action.payload),
         projectSelectedId: state.projectSelectedId
       };
-    case 'delete':
+    case ProjectActionTypes.DeleteProject:
       return {
         // payload: projecto que enviamos por la interfac a crear
         projectList: deleteProject(state.projectList, action.payload),
