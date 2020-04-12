@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CreateProject, DeleteProject, getEmptyProject, Project, ProjectsService, UpdateProject, LoadProjectList, initialProjectList, selectAllProjects, ProjectState } from '@workshop/core-data';
+import { CreateProject, DeleteProject, getEmptyProject, Project, ProjectsService, UpdateProject, LoadProjectList, selectAllProjects, ProjectState } from '@workshop/core-data';
 import { filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
@@ -18,8 +18,8 @@ export class ProjectsComponent implements OnInit {
     private projectsService: ProjectsService,
     private store: Store<ProjectState>
   ) {
+    this.projects$ = this.store.pipe(select(selectAllProjects));
     // creamos una lista a traves de una accion del reducer
-    this.store.dispatch(new LoadProjectList());
   }
 
   // lifecycle hook del componente: despues de bindear todos sus eventes: el moment oportuno de hacer llamada asyncrona al servicio que trae su modelo de datos
@@ -28,8 +28,8 @@ export class ProjectsComponent implements OnInit {
   }
 
   getProjects() {
+    this.store.dispatch(new LoadProjectList());
     // sincronizamos con el store
-    this.projects$ = this.store.pipe(select(selectAllProjects));
   }
 
   deleteProject(project: Project) {
