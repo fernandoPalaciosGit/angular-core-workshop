@@ -7,6 +7,7 @@ import { NxModule } from '@nrwl/nx';
 
 import { metaReducers, reducers } from '.';
 import { CustomersEffects } from './customers/customers.effects';
+import { ProjectsEffects } from './projects/projects.effects';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { CustomersEffects } from './customers/customers.effects';
     StoreModule.forRoot(reducers, {metaReducers}), // disponibilidad de reducers
     StoreDevtoolsModule.instrument({ maxAge: 10 }), // activar herramientas redux
     EffectsModule.forRoot([ // añadir la lista de EFFECTS (side effects)
-      CustomersEffects
+      CustomersEffects, ProjectsEffects
     ])
   ],
   declarations: []

@@ -1,5 +1,5 @@
 import { Project } from '@workshop/core-data';
-import { ProjectActionTypes } from './projects.actions';
+import { ProjectActionTypes, ProjectsActions } from './projects.actions';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
 // 1º - defnnir el esquema del reducer
@@ -26,13 +26,13 @@ export const projectReducer = (state: ProjectState = initialState, action): Proj
     // pasos a seguir para sincronizar datos son el reducer: signar un action.type y delear a un metodo standalona ---> PORQUE ES TESTEABLE
     case ProjectActionTypes.SelectProject:
       return Object.assign({}, state, { projectSelectedId: action.payload });
-    case ProjectActionTypes.CreateProject:
+    case ProjectActionTypes.ProjectCreated:
       return adapter.addOne(action.payload, state);
     case ProjectActionTypes.UpdateProject:
       return adapter.updateOne(action.payload, state);
     case ProjectActionTypes.DeleteProject:
       return adapter.removeOne(action.payload, state);
-    case ProjectActionTypes.LoadProjectList:
+    case ProjectActionTypes.ProjectListLoaded:
       return adapter.addMany(action.payload, state);
     default:
       return state;

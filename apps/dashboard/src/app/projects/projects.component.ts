@@ -19,7 +19,7 @@ export class ProjectsComponent implements OnInit {
     private store: Store<ProjectState>
   ) {
     // creamos una lista a traves de una accion del reducer
-    this.store.dispatch(new LoadProjectList(initialProjectList));
+    this.store.dispatch(new LoadProjectList());
   }
 
   // lifecycle hook del componente: despues de bindear todos sus eventes: el moment oportuno de hacer llamada asyncrona al servicio que trae su modelo de datos

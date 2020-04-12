@@ -194,3 +194,16 @@ REDUCER <----- @Output (event emiters) <----- child component
  - esquema de datos del reducer: interface ProjectState
  - modelo inicial del reducer: object initialState: ProjectState
  - reducer: function (state, action) {}
+
+
+### EFFECTS (side effect)
+@Effect : cuando queremos recibir datos de una fuente externa
+se trata de un middleware que intercepta la accion para manejar un side effect, una vez que finaliza, delega la accion al reducer para que continue con el evento que este manejando
+
+ACCIONES: se sapararan en acciones que disparan el @effect y acciones que se lanzan cuando el effect finaliza (que delegara al reducer)
+
+### añadir una capa de abstraccion de persistencia de datos en los Efectos que vayan a servidor
+permite resolver las RACE CONDITIONS, al controlar el orden de llegada de multiples requests   
+
+
+
