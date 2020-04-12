@@ -16,7 +16,7 @@ export class ProjectsComponent implements OnInit {
   // injection dependency by instance, (private) automatically creates local variable this.projectsService
   constructor(
     private projectsService: ProjectsService,
-    private store: Store<any> // MAGIA: Store <--> Reducer
+    private store: Store<any>
   ) {
     this.projects$ = store.pipe(
       select('projects'), // seleccionamos el estado de la aplicaicon que querramos sincronizar (pull del store)
