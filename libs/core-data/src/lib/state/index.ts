@@ -29,4 +29,16 @@ export const selectAllCustomers = createSelector(
   fromCustomers.selectAllCustomers
 );
 
-
+// -------------------------------------------------------------------
+// PROJECT SELECTORS, SELECTORES DE ALTO NIVEL (con estos interacciona la aplicacion)
+// -------------------------------------------------------------------
+export const selectProjectState = createFeatureSelector<fromProjects.ProjectState>('projects');
+export const selectProjectIds = createSelector(
+  selectProjectState, fromProjects.selectProjectIds
+);
+export const selectAllProjects = createSelector(
+  selectProjectState, fromProjects.selectAllProjects
+)
+;export const selectProjectEntities = createSelector(
+  selectProjectState, fromProjects.selectProjectEntities
+);

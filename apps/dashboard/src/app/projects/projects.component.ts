@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CreateProject, DeleteProject, getEmptyProject, Project, ProjectsService, ProjectState, UpdateProject, LoadProjectList, initialProjectList } from '@workshop/core-data';
-import { filter, map } from 'rxjs/operators';
+import { CreateProject, DeleteProject, getEmptyProject, Project, ProjectsService, UpdateProject, LoadProjectList, initialProjectList, selectAllProjects, ProjectState } from '@workshop/core-data';
+import { filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 
@@ -16,23 +16,20 @@ export class ProjectsComponent implements OnInit {
   // injection dependency by instance, (private) automatically creates local variable this.projectsService
   constructor(
     private projectsService: ProjectsService,
-    private store: Store<any>
-  ) {}
+    private store: Store<ProjectState>
+  ) {
+    // creamos una lista a traves de una accion del reducer
+    this.store.dispatch(new LoadProjectList(initialProjectList));
+  }
 
   // lifecycle hook del componente: despues de bindear todos sus eventes: el moment oportuno de hacer llamada asyncrona al servicio que trae su modelo de datos
   ngOnInit(): void {
-    // creamos una lista a traves de una accion del reducer
-    this.store.dispatch(new LoadProjectList(initialProjectList));
     this.resetProjects();
   }
 
   getProjects() {
     // sincronizamos con el store
-    this.projects$ = this.store.pipe(
-      select('projects'), // seleccionamos el estado de la aplicaicon que querramos sincronizar (pull del store)
-      map((data) => data.entities),
-      map((data) => Object.values(data))
-    );
+    this.projects$ = this.store.pipe(select(selectAllProjects));
   }
 
   deleteProject(project: Project) {

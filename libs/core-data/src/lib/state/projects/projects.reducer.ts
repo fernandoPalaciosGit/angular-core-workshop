@@ -38,3 +38,13 @@ export const projectReducer = (state: ProjectState = initialState, action): Proj
       return state;
   }
 };
+
+// en los reducers mantenemos el estado de la aplicacion (mutabilidaa) , utilizamos las Entityus para definir el estado de nuestro projecto (e un adaptador para el modelo de nuestra store , conjunto de interfaces que nos permiten sincronizar datos como si fuera una BBDD), y los Selectors son las Querys que nos permiten seleccionar registros de nuestra Entity
+// crearemos una interfaz que definira las querys de estos Selectors
+// -------------------------------------------------------------------
+// SELECTORES DE BAJO NIVEL (manipula el reducer a traves del adapter)
+// -------------------------------------------------------------------
+const { selectAll, selectEntities, selectIds } = adapter.getSelectors();
+export const selectAllProjects = selectAll;
+export const selectProjectEntities = selectEntities;
+export const selectProjectIds = selectIds;
