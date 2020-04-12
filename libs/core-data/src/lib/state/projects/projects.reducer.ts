@@ -1,11 +1,10 @@
-import { initialProjectList, Project } from '@workshop/core-data';
+import { Project } from '@workshop/core-data';
 import { ProjectActionTypes } from './projects.actions';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
 // 1º - defnnir el esquema del reducer
 // - creamos una Entity para manejar la colecciond de Projects (como si fuera una base de datos)
 export interface ProjectState extends EntityState<Project> {
-  projectList: Project[];
   projectSelectedId: string | null;
 }
 
@@ -16,7 +15,6 @@ export const adapter: EntityAdapter<Project> = createEntityAdapter<Project>();
 // 3º - definir el estado inicial del reducer
 // crear un initiañstate a partir del adapter de la ectity
 export const initialState: ProjectState = adapter.getInitialState({
-  projectList: initialProjectList,
   projectSelectedId: null
 });
 
@@ -34,6 +32,8 @@ export const projectReducer = (state: ProjectState = initialState, action): Proj
       return adapter.updateOne(action.payload, state);
     case ProjectActionTypes.DeleteProject:
       return adapter.removeOne(action.payload, state);
+    case ProjectActionTypes.LoadProjectList:
+      return adapter.addMany(action.payload, state);
     default:
       return state;
   }
