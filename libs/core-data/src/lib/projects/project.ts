@@ -5,13 +5,13 @@ export interface Project {
   percentComplete: number;
   approved: boolean;
   customerId: string;
-  completionDate: Date | null;
-  startDate: Date | null;
-  targetDate: Date | null;
+  completionDate: Date;
+  startDate: Date;
+  targetDate: Date;
 }
 
 export const getEmptyProject = (): Project => ({
-  id: '',
+  id: null,
   title: '',
   details: '',
   percentComplete: 0,

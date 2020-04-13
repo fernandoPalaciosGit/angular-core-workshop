@@ -205,5 +205,5 @@ ACCIONES: se sapararan en acciones que disparan el @effect y acciones que se lan
 ### añadir una capa de abstraccion de persistencia de datos en los Efectos que vayan a servidor
 permite resolver las RACE CONDITIONS, al controlar el orden de llegada de multiples requests   
 
-
-
+## FAÇADES -> objetivo = dejar los container components lo mas sencillos posibles, aislando la logica de stores a una fachada
+se terata de un nivel mas de abstraccion para los componentes de tipo contenedor, que comunican hacia los reducers o effects

@@ -1,20 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  CreateProject,
-  DeleteProject,
   getEmptyProject,
-  Project,
-  ProjectsService,
-  UpdateProject,
-  LoadProjectList,
-  selectAllProjects,
-  ProjectState,
-  selectCurrentProject,
-  SelectProject
+  Project, ProjectsFacade,
+  ProjectsService
 } from '@workshop/core-data';
 import { filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { Store, select } from '@ngrx/store';
 
 @Component({
   selector: 'workshop-projects',
@@ -28,45 +19,39 @@ export class ProjectsComponent implements OnInit {
   // injection dependency by instance, (private) automatically creates local variable this.projectsService
   constructor(
     private projectsService: ProjectsService,
-    private store: Store<ProjectState>
+    private facade: ProjectsFacade
   ) {
-    // sincronizamos con el store tanto la entidad de projectos como el selector actual
-    this.projects$ = this.store.pipe(select(selectAllProjects));
-    this.selectedProject$ = this.store.pipe(select(selectCurrentProject));
+    this.projects$ = facade.projects$;
+    this.selectedProject$ = facade.selectedProject$;
   }
 
   // lifecycle hook del componente: despues de bindear todos sus eventes: el moment oportuno de hacer llamada asyncrona al servicio que trae su modelo de datos
   ngOnInit(): void {
-    this.resetProjects();
-    this.resetSelectProject(null);
-  }
-
-  resetSelectProject(project: Project) {
-    this.store.dispatch(new SelectProject(project));
-  }
-
-  resetProjects() {
-    // creamos una lista a traves de una accion del reducer
-    this.store.dispatch(new LoadProjectList());
+    this.facade.resetProjects();
+    this.resetSelectProjectEmpty();
   }
 
   selectProject(project: Project) {
-    this.resetSelectProject(project);
+    this.facade.resetSelectProject(project);
   }
 
   deleteProject(project: Project) {
-    this.store.dispatch(new DeleteProject(project));
-    this.resetSelectProject(null);
+    this.facade.deleteProject(project);
+    this.resetSelectProjectEmpty();
   }
 
   createProject(project: Project) {
-    this.store.dispatch(new CreateProject(project));
-    this.resetSelectProject(null);
+    this.facade.createProject(project);
+    this.resetSelectProjectEmpty();
   }
 
   updateProject(project: Project) {
-    this.store.dispatch(new UpdateProject(project));
-    this.resetSelectProject(null);
+    this.facade.updateProject(project);
+    this.resetSelectProjectEmpty();
+  }
+
+  resetSelectProjectEmpty() {
+    this.facade.resetSelectProject(getEmptyProject());
   }
 
   getApprovedProjects() {
