@@ -3,6 +3,9 @@ import * as fromCustomers from './customers/customers.reducer';
 import * as fromProjects from './projects/projects.reducer';
 import { isDevMode } from '@angular/core';
 import { storeFreeze } from 'ngrx-store-freeze';
+import { Customer } from '../customers/customer.model';
+import { Projects } from '@angular/cli/lib/config/schema';
+import { Project } from '../..';
 
 // import the type of reducers
 export interface AppState {
@@ -49,4 +52,13 @@ export const selectAllProjects = createSelector(
 export const selectCurrentProject = createSelector(
   selectProjectEntities, selectCurrentProjectId,
   fromProjects.getSelectedProjectEntity
+);
+
+export const selectCustomersWithProjects = createSelector(
+  selectAllCustomers,
+  selectAllProjects,
+  (customers: Customer[], projects: Projects[]) =>
+    customers.map((customer: Customer) => Object.assign({}, customer, {
+      projects: projects.filter((project: Project) => project.customerId === customer.id)
+    }))
 );
