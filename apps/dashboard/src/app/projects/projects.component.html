@@ -10,7 +10,7 @@
   <!-- PROJECT DETAILS -->
   <div class="col-50">
     <workshop-project-form
-      [project]="selectedProject"
+      [project]="selectedProject$ | async"
       (saved)="saveProject($event)"
       (reset)="resetProjects()">
     </workshop-project-form>

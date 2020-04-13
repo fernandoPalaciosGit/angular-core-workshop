@@ -31,7 +31,7 @@ export class ProjectsEffects {
   @Effect() addProjects$: Observable<Action> = this.dataPersistence.pessimisticUpdate(ProjectActionTypes.CreateProject, {
     run: (action: CreateProject, state: ProjectState) => {
       return this.projectsService.create(action.payload).pipe(
-        map((project: Project) => new ProjectCreated(project))
+        map((response: Project) => new ProjectCreated(response))
       );
     },
     onError: (action: CreateProject, error) => {

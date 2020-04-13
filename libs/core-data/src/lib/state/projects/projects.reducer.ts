@@ -1,5 +1,5 @@
-import { Project } from '@workshop/core-data';
-import { ProjectActionTypes, ProjectsActions } from './projects.actions';
+import { getEmptyProject, Project } from '@workshop/core-data';
+import { ProjectActionTypes } from './projects.actions';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
 // 1º - defnnir el esquema del reducer
@@ -44,7 +44,8 @@ export const projectReducer = (state: ProjectState = initialState, action): Proj
 // -------------------------------------------------------------------
 // SELECTORES DE BAJO NIVEL (manipula el reducer a traves del adapter)
 // -------------------------------------------------------------------
-const { selectAll, selectEntities, selectIds } = adapter.getSelectors();
+const { selectAll, selectEntities } = adapter.getSelectors();
 export const selectAllProjects = selectAll;
 export const selectProjectEntities = selectEntities;
-export const selectProjectIds = selectIds;
+export const getSelectedProjectId = (state: ProjectState) => state.projectSelectedId;
+export const getSelectedProjectEntity = (projectEntity, projectId) => projectId ? projectEntity[projectId] : getEmptyProject();
